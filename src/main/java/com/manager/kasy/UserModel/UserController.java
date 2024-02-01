@@ -54,12 +54,12 @@ public class UserController {
      }
 
 
-    @DeleteMapping("/users/delete/{id}")
+    @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes attributes){
         try {
 
             service.delete(id);
-            attributes.addFlashAttribute("message","The user ID " + id + "has been deleted successfully");
+            attributes.addFlashAttribute("message","The user ID " + id + " has been deleted successfully");
         } catch (UserNotFoundException e ){
             // e.printStackTrace();
             attributes.addFlashAttribute("message", e.getMessage());
